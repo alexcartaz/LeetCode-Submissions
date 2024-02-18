@@ -1,15 +1,16 @@
-
 /**
  * @param {number[][]} points
  * @param {number} k
  * @return {number[][]}
  */
+
 var kClosest = function(points, k) {    
     
     let unordered = [];
     let ans = [];
     let distance, obj;
     let index = 0;
+    
     points.map( ([x,y]) => {
         distance = Math.sqrt(x**2 + y**2);
         obj = {
@@ -19,18 +20,16 @@ var kClosest = function(points, k) {
         unordered.push(obj);
         index++;
     });
-    //console.log(unordered)
+
     const ordered = unordered.sort((a, b) => {
         return a.dist - b.dist;
     });
-    //console.log(ordered)
 
     ordered.length = k;
-    //console.log(ordered)
 
     ordered.map( obj => {
         ans.push(obj.pair)
-    })
+    });
 
     return ans;
 };
